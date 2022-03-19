@@ -1,0 +1,14 @@
+{
+  "name": "taskhit-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:zephyrus21/taskhit-api.git",
+  "author": "zephyrus21 <pandey.piyus@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
