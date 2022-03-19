@@ -1,17 +1,32 @@
 const Task = require("../models/task");
 
-exports.createTask = async (req, res) => {
-  console.log(req.body);
-  const task = new Task({
-    ...req.body,
-  });
+exports.createTask = async(req, res) => {
+    const task = new Task({
+        ...req.body,
+    });
 
-  console.log(task);
+    try {
+        await task.save();
+        res.send(task);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+};
 
-  try {
-    await task.save();
-    res.send(task);
-  } catch (err) {
-    res.status(400).send(err);
-  }
+exports.getAllTasks = async(req, res) => {
+    try {
+        const tasks = await Task.find();
+        res.send(tasks);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
+exports.deleteTask = async(req, res) => {
+    const task = await Task.findByIdAndDelete(req.params.id);
+
+    await task.remove();
+
+    res.status(200).json({
+        success: true,
+    });
 };
