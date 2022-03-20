@@ -21,6 +21,16 @@ exports.getAllTasks = async (req, res) => {
     res.status(500).send(err);
   }
 };
+
+exports.getTask = async (req, res) => {
+  try {
+    const tasks = await Task.findById(req.params.id);
+    res.send(tasks);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
 exports.deleteTask = async (req, res) => {
   const task = await Task.findByIdAndDelete(req.params.id);
 
