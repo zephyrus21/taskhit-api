@@ -7,7 +7,7 @@ const { task } = require("./routes/task");
 const app = express();
 app.use(bodyParser.json());
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 connectWithDb();
 

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const connectWithDb = () => {
   mongoose
-    .connect("mongodb://localhost:27017/taskhit", {
+    .connect(process.env.DBURL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
