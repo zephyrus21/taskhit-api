@@ -5,6 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectWithDb = require("./config/db");
 const { task } = require("./routes/task");
+const { user } = require("./routes/user");
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 4000;
 
 connectWithDb();
 
+app.use(user);
 app.use(task);
 
 app.get("/", (req, res) => {
